@@ -1,0 +1,28 @@
+body {
+  background: darkseagreen;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vH;
+}
+form {
+  width: 400px;
+}
+input {
+  border: none;
+}
+input, button{
+  padding: 10px;
+  width: -webkit-fill-available;
+}
+button {
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.form-field {
+  margin-bottom: 10px;
+}
+
+
+
