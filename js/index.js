@@ -1,3 +1,5 @@
+
+
 function onChangeEmail(){
   toggleButtonsDisable();
   toggleEmailErrors();
@@ -18,18 +20,43 @@ function isEmailValid(){
 
 function isPasswordValid(){
   const password = form.password().value;
-  if(!password){
-    return false;
-  }
-  return true;
-}
-
-function login() {
-  window.location.href = "./pages/home/home.html";
+  return !(!password);
 }
 
 function register() {
   window.location.href = "./pages/register/register.html";
+}
+
+function login() {
+  showLoading();
+  firebase.auth().signInWithEmailAndPassword(
+    form.email().value, form.password().value).then(response => {
+    window.location.href = "./pages/home/home.html";
+  }).catch(error => {
+    hideLoading();
+    alert(getErrorMessage(error))
+  });
+}
+
+function recoverPassword(){
+  showLoading()
+  firebase.auth().sendPasswordResetEmail(form.email().value).then(() => {
+    hideLoading()
+    alert('Email enviado com sucesso!')
+  }).catch(error => {
+    hideLoading()
+    alert(getErrorMessage(error))
+  })
+}
+
+function getErrorMessage(error){
+  if(error.code === "auth/invalid-credential"){
+    return "Credenciais incorretas"
+  }
+  if(error.code === "auth/user-not-found"){
+    return "Usuário não encontrado"
+  }
+  return error.message;
 }
 
 function toggleButtonsDisable(){

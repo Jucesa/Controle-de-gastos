@@ -5,7 +5,7 @@
     <title>Login</title>
   </head>
 
-  <body>
+  <body class="centralize">
 
     <form>
       <div class="form-field">
@@ -20,7 +20,7 @@
         <div class="error" id="password-required-error">Senha é obrigatória</div>
       </div>
       <div>
-        <button type="button" class="clear" disabled="true" id="recover-password-button">Recuperar senha</button>
+        <button type="button" class="clear" onclick="recoverPassword()" disabled="true" id="recover-password-button">Recuperar senha</button>
       </div>
       <div>
         <button type="button" class="solid" onclick="login()" disabled="true" id="login-button">Entrar</button>
@@ -31,32 +31,16 @@
     </form>
   </body>
 
-  <link rel="stylesheet" href="css/index.css"/>
-  <link rel="stylesheet" href="css/global.css"/>
+  <link rel="stylesheet" href="./css/index.css"/>
+  <link rel="stylesheet" href="./css/global.css"/>
 
-  <script src="js/app.js"></script>
-  <script src="js/validations.js"></script>
+  <script src="./js/index.js"></script>
+  <script src="./js/validations.js"></script>
+  <script src="./js/loading.js"></script>
 
   <script src="https://www.gstatic.com/firebasejs/11.1.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/11.1.0/firebase-auth-compat.js"></script>
-  <script type="module">
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyBu6DgM07mr1wnepPJi65Offo-CilzAe5U",
-      authDomain: "controle-de-gastos-1988f.firebaseapp.com",
-      projectId: "controle-de-gastos-1988f",
-      storageBucket: "controle-de-gastos-1988f.firebasestorage.app",
-      messagingSenderId: "142837886759",
-      appId: "1:142837886759:web:3dad698843de33288dc302"
-    };
-    const app  = firebase.initializeApp(firebaseConfig);
-
-    app.auth().signInWithEmailAndPassword("jc16032005@gmail.com", "umasenha").then(response => {
-      console.log('sucess', response)
-    }).catch(error => {
-      console.log('failed', error)
-    });
-
-  </script>
+  <script src="./js/firebase-init.js"></script>
 
 </html>
